@@ -23,3 +23,8 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
+### Egne regler ###
+*.class
+# application.properties
+# ProposalApplication.java
