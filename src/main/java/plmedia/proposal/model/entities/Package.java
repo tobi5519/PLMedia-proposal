@@ -2,13 +2,13 @@ package plmedia.proposal.model.entities;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "Package")
 @Table(name = "package")
-public class Packages {
+public class Package {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id")
+    @Column(name = "package_id")
     private int id;
 
     @Column(name = "name")
@@ -17,7 +17,7 @@ public class Packages {
     @Column(name = "description")
     private String description;
 
-    public Packages() {
+    public Package() {
     }
 
     public int getId() {

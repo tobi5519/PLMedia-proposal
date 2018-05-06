@@ -3,9 +3,8 @@ package plmedia.proposal.model.entities;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-@Entity
+@Entity(name = "Product")
 @Table(name = "product")
 public class Product {
 
@@ -14,7 +13,7 @@ public class Product {
     @Column(name = "product_id")
     private int id;
 
-    @Column(name = "name", unique = true) // unique is not working
+    @Column(name = "name")
     private String name;
 
     @Column(name = "price")

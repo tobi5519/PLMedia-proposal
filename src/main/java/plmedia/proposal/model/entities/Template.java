@@ -2,7 +2,7 @@ package plmedia.proposal.model.entities;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "Template")
 @Table(name = "template")
 public class Template {
 
@@ -11,8 +11,9 @@ public class Template {
     @Column(name = "template_id")
     private int id;
 
-    @OneToOne
-    @JoinTable(name = "proposal")
+    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinTable(name = "proposal")
+    @PrimaryKeyJoinColumn(name = "proposal")
     private Proposal proposal;
 
     public Template() {

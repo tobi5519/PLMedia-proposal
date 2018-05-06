@@ -12,12 +12,37 @@ import plmedia.proposal.model.services.*;
 public class MainController {
 
     @Autowired
+    ContactPersonRepo contactPersonRepo;
+
+    @Autowired
+    CustomerRepo customerRepo;
+
+    @Autowired
+    PackageRepo packageRepo;
+
+    @Autowired
+    ProductCategoryRepo productCategoryRepo;
+
+    @Autowired
     ProductRepo productRepo;
+
+    @Autowired
+    ProposalRepo proposalRepo;
+
+    @Autowired
+    TemplateRepo templateRepo;
+
 
     public MainController(){}
 
     @RequestMapping(value = {"", "/", "index"}, method = RequestMethod.GET)
     public String index(){
+
+        ProposalCreator proposalCreator = new ProposalCreator();
+        Proposal proposal = proposalCreator.createProposal();
+        System.out.println(proposal);
+        proposalRepo.save(proposal);
+
         return "index";
     }
 }

@@ -2,7 +2,7 @@ package plmedia.proposal.model.entities;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "ContactPerson")
 @Table(name = "contact_person")
 public class ContactPerson {
 
@@ -21,7 +21,8 @@ public class ContactPerson {
     private String phoneNumber;
 
     @ManyToOne
-    @JoinTable(name = "customer")
+    @PrimaryKeyJoinColumn(name = "customer")
+
     private Customer customer;
 
     public ContactPerson() {

@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name = "Proposal")
 @Table(name = "proposal")
 public class Proposal {
 
@@ -23,7 +23,7 @@ public class Proposal {
     @Column(name = "accept_date")
     private Date acceptDate;
 
-    @OneToOne
+    @OneToOne(mappedBy = "proposal", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "template")
     private Template template;
 

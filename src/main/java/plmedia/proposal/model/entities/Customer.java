@@ -3,7 +3,7 @@ package plmedia.proposal.model.entities;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+@Entity(name = "Customer")
 @Table(name = "customer")
 public class Customer {
 

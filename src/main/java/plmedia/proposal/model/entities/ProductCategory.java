@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-@Entity
+@Entity(name = "ProductCategory")
 @Table(name = "product_category")
 public class ProductCategory {
 
