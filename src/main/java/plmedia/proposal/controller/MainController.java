@@ -45,6 +45,16 @@ public class MainController {
 
         return "index";
     }
+
+    @RequestMapping(value = {"products"}, method = RequestMethod.GET)
+    public String products() {
+        return "products";
+    }
+
+    @RequestMapping(value = {"login"}, method = RequestMethod.GET)
+    public String login() {
+        return "login";
+    }
 }
 
 

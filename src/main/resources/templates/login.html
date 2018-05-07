@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login side</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body class="container-fluid">
+<div class="row justify-content-md-center">
+    <form th:action="@{/login}" th:method="post" class="justify-content-center">
+        <h3>App login</h3>
+        <div class="form-group ">
+            <label for="username">Brugernavn: <input type="text" class="form-control" id="username" name="username">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Kodeord:</label> <input type="password" class="form-control" id="pwd" name="password">
+        </div>
+        <button type="submit" class="btn btn-success">Login</button>
+        <div th:if="${param.error}">
+            <div style="color:red">Brugernavn eller kodeord er forkert - prøv igen.</div>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

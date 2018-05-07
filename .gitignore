@@ -26,5 +26,5 @@
 
 ### Egne regler ###
 *.class
-# application.properties
+application.properties
 # ProposalApplication.java
