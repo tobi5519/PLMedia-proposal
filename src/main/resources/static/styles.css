@@ -1,0 +1,9 @@
+#editor-error {
+    border: 1px solid #F00;
+    height: 100px;
+    margin: 0 auto;
+    width: 250px;
+    color: #F00;
+    font-weight: bold;
+    text-align: center;
+}

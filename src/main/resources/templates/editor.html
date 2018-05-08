@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>PLMedia</title>
+    <div th:replace="fragments/header :: header-css"/>
+    <link rel="stylesheet" href="/styles.css"/>
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+</head>
+<body class="container-fluid">
+<div th:replace="fragments/header :: header"/>
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <img src="https://i.imgur.com/zuVzM3b.png" class="img_fluid" width="868" height="517" alt="Responsive image">
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                Tilføj produkt
+            </div>
+            <div class="card-body">
+                <p>Produkt 1 <a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 1" data-content="Beskrivelse af produkt 1">(Detaljer)</a></p>
+                <p>Produkt 2 <a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 2" data-content="Beskrivelse af produkt 2">(Detaljer)</a></p>
+                <p>Produkt 3 <a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 3" data-content="Beskrivelse af produkt 3">(Detaljer)</a></p>
+                <p>Produkt 4 <a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 4" data-content="Beskrivelse af produkt 4">(Detaljer)</a></p>
+                <p>Produkt 5 <a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 5" data-content="Beskrivelse af produkt 5">(Detaljer)</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Produkt</th>
+                <th scope="col">Beskrivelse</th>
+                <th scope="col">Pris</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Produkt 1</td>
+                <td><a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 1" data-content="Beskrivelse af produkt 1">(Detaljer)</a></td>
+                <td>999 .-</td>
+            </tr>
+            <tr>
+                <td>Produkt 2</td>
+                <td><a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 2" data-content="Beskrivelse af produkt 2">(Detaljer)</a></td>
+                <td>1749 .-</td>
+            </tr>
+            <tr>
+                <td>Produkt 3</td>
+                <td><a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 3" data-content="Beskrivelse af produkt 3">(Detaljer)</a></td>
+                <td>3299 .-</td>
+            </tr>
+            <tr>
+                <td>Produkt 4</td>
+                <td><a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 4" data-content="Beskrivelse af produkt 4">(Detaljer)</a></td>
+                <td>3299 .-</td>
+            </tr>
+            <tr>
+                <td>Produkt 5</td>
+                <td><a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 5" data-content="Beskrivelse af produkt 5">(Detaljer)</a></td>
+                <td>3299 .-</td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="editor-error">Eventuelle fejlmeddelelser til brugeren!</div>
+        </br>
+        <button type="button" class="btn btn-primary">Send tilbud</button>
+    </div>
+</div>
+</body>
+</html>
