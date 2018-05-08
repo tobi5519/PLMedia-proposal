@@ -6,6 +6,9 @@
 </head>
 <body class="container-fluid">
 <div th:replace="fragments/header :: header"/>
+<div class="col-md-10 offset-md-1">
+<a th:href="@{/createproduct}">Opret nyt produkt</a>
+</div>
 <div class="row">
     <div class="col-md-10 offset-md-1">
         <div class="table-responsive">
@@ -46,7 +49,7 @@
                 </tbody>
             </table>
         </div>
-        <a th:href="@{/createproduct}">Opret nyt produkt</a>
+
     </div>
 </div>
 </body>
