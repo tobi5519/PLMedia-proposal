@@ -55,6 +55,11 @@ public class MainController {
     public String login() {
         return "login";
     }
+
+    @RequestMapping(value = {"statistics"}, method = RequestMethod.GET)
+    public String statistics() {
+        return "statistics";
+    }
 }
 
 
