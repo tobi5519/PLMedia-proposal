@@ -1,9 +1,22 @@
+#editor-extra {
+    border: 0px solid #000;
+    margin: 0 auto;
+    width: 300px;
+    color: #F00;
+    font-weight: bold;
+    text-align: center;
+}
+
 #editor-error {
     border: 1px solid #F00;
     height: 100px;
     margin: 0 auto;
-    width: 250px;
+    width: 300px;
     color: #F00;
     font-weight: bold;
     text-align: center;
+}
+
+.sent-prop-btn {
+    margin-left: 20px;
 }

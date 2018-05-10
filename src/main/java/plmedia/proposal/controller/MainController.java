@@ -51,6 +51,11 @@ public class MainController {
         return "products";
     }
 
+    @RequestMapping(value = {"productdetails"}, method = RequestMethod.GET)
+    public String productdetails() {
+        return "productdetails";
+    }
+
     @RequestMapping(value = {"login"}, method = RequestMethod.GET)
     public String login() {
         return "login";
@@ -64,6 +69,11 @@ public class MainController {
     @RequestMapping(value = {"editor"}, method = RequestMethod.GET)
     public String editor() {
         return "editor";
+    }
+
+    @RequestMapping(value = {"sentproposals"}, method = RequestMethod.GET)
+    public String sentproposals() {
+        return "sentproposals";
     }
 }
 

@@ -6,9 +6,48 @@
 </head>
 <body class="container-fluid">
 <div th:replace="fragments/header :: header"/>
-<div class="col-md-10 offset-md-1">
-<a th:href="@{/createproduct}">Opret nyt produkt</a>
+<div class="row justify-content-center">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Opret nyt produkt
+    </button>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Opret nyt produkt</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="productname-text" class="col-form-label">Navn:</label>
+                            <input type="text" class="form-control" id="productname-text">
+                        </div>
+                        <div class="form-group">
+                            <label for="productdesc-text" class="col-form-label">Beskrivelse:</label>
+                            <textarea class="form-control" id="productdesc-text"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="productprice-text" class="col-form-label">Pris:</label>
+                            <input type="text" class="form-control" id="productprice-text">
+                        </div>
+                        <div class="btn-group" role="group" aria-label="Basic example" style="margin-top: 5px">
+                            <button type="submit" class="btn btn-primary">Opret produkt</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annullér</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<br>
 <div class="row">
     <div class="col-md-10 offset-md-1">
         <div class="table-responsive">
@@ -27,24 +66,24 @@
                     <td>Login funktion</td>
                     <td>Hjemmeside</td>
                     <td>1000</td>
-                    <td><a th:href="@{/productdetails(productId=${id})}">Detaljer</a></td>
-                    <td><a th:href="@{/productdetails(productId=${id})}">Slet</a></td>
+                    <td><a th:href="@{/productdetails}">Detaljer</a></td>
+                    <td><a th:href="@{/#}">Slet</a></td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
                     <td>Logo</td>
                     <td>Hjemmeside</td>
                     <td>100</td>
-                    <td><a th:href="@{/productdetails(productId=${id})}">Detaljer</a></td>
-                    <td><a th:href="@{/productdetails(productId=${id})}">Slet</a></td>
+                    <td><a th:href="@{/productdetails}">Detaljer</a></td>
+                    <td><a th:href="@{/#}">Slet</a></td>
                 </tr>
                 <tr>
                     <th scope="row">3</th>
                     <td>Overskrifter</td>
                     <td>Hjemmeside</td>
                     <td>50</td>
-                    <td><a th:href="@{/productdetails(productId=${id})}">Detaljer</a></td>
-                    <td><a th:href="@{/productdetails(productId=${id})}">Slet</a></td>
+                    <td><a th:href="@{/productdetails}">Detaljer</a></td>
+                    <td><a th:href="@{/#}">Slet</a></td>
                 </tr>
                 </tbody>
             </table>
@@ -54,3 +93,5 @@
 </div>
 </body>
 </html>
+
+<!-- productdetails(productId=${id}) -->
