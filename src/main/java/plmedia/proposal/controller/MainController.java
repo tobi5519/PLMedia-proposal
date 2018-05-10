@@ -71,6 +71,11 @@ public class MainController {
     public String statistics() {
         return "statistics";
     }
+
+    @RequestMapping(value = {"editor"}, method = RequestMethod.GET)
+    public String editor() {
+        return "editor";
+    }
 }
 
 

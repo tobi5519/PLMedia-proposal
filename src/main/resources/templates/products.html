@@ -6,46 +6,50 @@
 </head>
 <body class="container-fluid">
 <div th:replace="fragments/header :: header"/>
+<div class="col-md-10 offset-md-1">
+<a th:href="@{/createproduct}">Opret nyt produkt</a>
+</div>
 <div class="row">
-    <div class="table-responsive">
     <div class="col-md-10 offset-md-1">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Navn</th>
-                <th scope="col">Kategori</th>
-                <th scope="col">Stykpris</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Login funktion</td>
-                <td>Hjemmeside</td>
-                <td>1000</td>
-                <td><a th:href="@{/productdetails(productId=${id})}">Detaljer</a></td>
-                <td><a th:href="@{/productdetails(productId=${id})}">Slet</a></td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Logo</td>
-                <td>Hjemmeside</td>
-                <td>100</td>
-                <td><a th:href="@{/productdetails(productId=${id})}">Detaljer</a></td>
-                <td><a th:href="@{/productdetails(productId=${id})}">Slet</a></td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Overskrifter</td>
-                <td>Hjemmeside</td>
-                <td>50</td>
-                <td><a th:href="@{/productdetails(productId=${id})}">Detaljer</a></td>
-                <td><a th:href="@{/productdetails(productId=${id})}">Slet</a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Navn</th>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">Stykpris</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Login funktion</td>
+                    <td>Hjemmeside</td>
+                    <td>1000</td>
+                    <td><a th:href="@{/productdetails(productId=${id})}">Detaljer</a></td>
+                    <td><a th:href="@{/productdetails(productId=${id})}">Slet</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Logo</td>
+                    <td>Hjemmeside</td>
+                    <td>100</td>
+                    <td><a th:href="@{/productdetails(productId=${id})}">Detaljer</a></td>
+                    <td><a th:href="@{/productdetails(productId=${id})}">Slet</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Overskrifter</td>
+                    <td>Hjemmeside</td>
+                    <td>50</td>
+                    <td><a th:href="@{/productdetails(productId=${id})}">Detaljer</a></td>
+                    <td><a th:href="@{/productdetails(productId=${id})}">Slet</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </div>
 </body>
