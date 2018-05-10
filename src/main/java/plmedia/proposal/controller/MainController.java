@@ -2,11 +2,15 @@ package plmedia.proposal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import plmedia.proposal.model.entities.*;
 import plmedia.proposal.model.repositories.*;
 import plmedia.proposal.model.services.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -49,6 +53,13 @@ public class MainController {
     @RequestMapping(value = {"products"}, method = RequestMethod.GET)
     public String products() {
         return "products";
+    }
+
+    @RequestMapping(value = {"productdetails"}, method = RequestMethod.GET, params = {"productId"})
+    public String productDetails(Model model, @RequestParam int productId){
+        model.addAttribute("product", productRepo.findById((productId)));
+        Product product = productRepo.findById(productId);
+        return "productdetails";
     }
 
     @RequestMapping(value = {"login"}, method = RequestMethod.GET)

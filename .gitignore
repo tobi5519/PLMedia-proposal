@@ -27,4 +27,5 @@
 ### Egne regler ###
 *.class
 application.properties
-# ProposalApplication.java
+ProposalApplication.java
+.gitignore
