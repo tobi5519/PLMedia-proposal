@@ -2,6 +2,7 @@ package plmedia.proposal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import plmedia.proposal.model.entities.*;
@@ -62,7 +63,20 @@ public class MainController {
     }
 
     @RequestMapping(value = {"statistics"}, method = RequestMethod.GET)
-    public String statistics() {
+    public String statistics(Model model) {
+        double totalAcceptedProposals = 0;
+
+        // Counting the total of accepted proposals - should be moved away from controller.
+        for (int i = 0; i < proposalRepo.findAll().size(); i++) {
+            if (proposalRepo.findAll().get(i).getAcceptDate() != null) {
+                totalAcceptedProposals++;
+            }
+        }
+        model.addAttribute("totalProposals", proposalRepo.findAll().size());
+        model.addAttribute("totalAcceptedProposals", totalAcceptedProposals);
+        model.addAttribute("totalNotAcceptedProposals", proposalRepo.findAll().size()-totalAcceptedProposals);
+
+        System.out.println(proposalRepo.findAll().size()-totalAcceptedProposals);
         return "statistics";
     }
 

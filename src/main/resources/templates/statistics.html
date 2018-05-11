@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <title>PLMedia</title>
     <div th:replace="fragments/header :: header-css"/>
@@ -9,33 +9,34 @@
 <div class="row">
     <div class="col-md-3 offset-md-1 ">
         <div class="card bg-light" style="max-width: 20rem;">
-            <div class="card-header">Samlet statistik</div>
+            <div class="card-header" align="center">Samlet statistik</div>
             <div class="card-body">
-                <p class="card-text">Samlet antal afsendte tilbud: 100</p>
-                <p class="card-text">Samlet antal accepterede tilbud: 37</p>
-                <p class="card-text">Accepterede tilbud i procent: 37% </p>
+                <p class="card-text">Samlet antal afsendte tilbud: <span class="card-text" th:text="${#numbers.formatDecimal(totalProposals,1,0)}"></span></p>
+                <p class="card-text">Samlet antal accepterede tilbud: <span class="card-text" th:text="${#numbers.formatDecimal(totalAcceptedProposals,1,0)}"></span></span></p>
+                <p class="card-text">Samlet antal accepterede tilbud: <span class="card-text" th:text="${#numbers.formatDecimal(((totalAcceptedProposals / totalProposals) * 100), 1, 1)}"></span>%</p>
             </div>
         </div>
-
     </div>
     <div class="col-md-8">
         <div id="piechart"></div>
 
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-        <script type="text/javascript">
+        <script type="text/javascript" th:inline="javascript">
             // Load google charts
             google.charts.load('current', {'packages':['corechart']});
             google.charts.setOnLoadCallback(drawChart);
 
             // Draw the chart and set the chart values
             function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Accepterede tilbud', 37],
-                    ['Ikke-accepterede tilbud', 63],
+                /*<![CDATA[*/
 
+                var data = google.visualization.arrayToDataTable([
+                    ['Tilbud', 'Antal'],
+                    ['Accepterede tilbud', /*[[${totalAcceptedProposals}]]*/],
+                    ['Ikke-accepterede tilbud', /*[[${totalNotAcceptedProposals}]]*/],
                 ]);
+                /*]]>*/
 
                 // Optional; add a title and set the width and height of the chart
                 var options = {};
