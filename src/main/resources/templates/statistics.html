@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-md-3 offset-md-1">
         <div class="card bg-light" style="max-width: 20rem;">
-            <div class="card-header" align="center">Samlet statistik</div>
+            <div class="card-header" align="center" th:text="${totalProposals1} ? 'Periode 1' : 'Samlet statistik'">Samlet statistik</div>
             <div class="card-body">
                 <p class="card-text">Samlet antal afsendte tilbud: <span class="card-text" th:text="${#numbers.formatDecimal(totalProposals,1,0)}"></span></p>
                 <p class="card-text">Samlet antal accepterede tilbud: <span class="card-text" th:text="${#numbers.formatDecimal(totalAcceptedProposals,1,0)}"></span></span></p>
@@ -40,7 +40,9 @@
                 /*]]>*/
 
                 // Optional; add a title and set the width and height of the chart
-                var options = {};
+                var options = {
+                    chartArea:{top:15,bottom:15,width:'50%',height:'100%'}
+                };
 
                 // Display the chart inside the <div> element with id="piechart"
                 var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -84,7 +86,9 @@
                 /*]]>*/
 
                 // Optional; add a title and set the width and height of the chart
-                var options = {};
+                var options = {
+                    chartArea:{top:15,bottom:15,width:'50%',height:'100%'}
+                };
 
                 // Display the chart inside the <div> element with id="piechart"
                 var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
