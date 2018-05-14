@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ProposalRepo extends JpaRepository<Proposal, Integer> {
     List<Proposal> findAll();
+    List<Proposal> findAllByAcceptDateIsNotNull();
+    List<Proposal> findAllByAcceptDateIsNull();
 }

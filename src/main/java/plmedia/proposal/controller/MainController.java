@@ -64,19 +64,11 @@ public class MainController {
 
     @RequestMapping(value = {"statistics"}, method = RequestMethod.GET)
     public String statistics(Model model) {
-        double totalAcceptedProposals = 0;
 
-        // Counting the total of accepted proposals - should be moved away from controller.
-        for (int i = 0; i < proposalRepo.findAll().size(); i++) {
-            if (proposalRepo.findAll().get(i).getAcceptDate() != null) {
-                totalAcceptedProposals++;
-            }
-        }
-        model.addAttribute("totalProposals", proposalRepo.findAll().size());
-        model.addAttribute("totalAcceptedProposals", totalAcceptedProposals);
-        model.addAttribute("totalNotAcceptedProposals", proposalRepo.findAll().size()-totalAcceptedProposals);
+        model.addAttribute("totalProposals", Double.valueOf(proposalRepo.findAll().size()));
+        model.addAttribute("totalAcceptedProposals", Double.valueOf(proposalRepo.findAllByAcceptDateIsNotNull().size()));
+        model.addAttribute("totalNotAcceptedProposals", Double.valueOf(proposalRepo.findAllByAcceptDateIsNull().size()));
 
-        System.out.println(proposalRepo.findAll().size()-totalAcceptedProposals);
         return "statistics";
     }
 
@@ -89,6 +81,7 @@ public class MainController {
     public String sentproposals() {
         return "sentproposals";
     }
+
 }
 
 
