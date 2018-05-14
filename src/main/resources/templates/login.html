@@ -18,11 +18,10 @@
             <label for="pwd">Kodeord:</label> <input type="password" class="form-control" id="pwd" name="password" value="1234">
         </div>
         <button type="submit" class="btn btn-success">Login</button>
-        <div th:if="${param.error}">
-            <div style="color:red">Brugernavn eller kodeord er forkert - prøv igen.</div>
-        </div>
     </form>
-
+</div>
+<div class="row justify-content-center mt-2" th:if="${param.error}">
+    <div style="color:red">Brugernavn eller kodeord er forkert - prøv igen.</div>
 </div>
 </body>
 </html>
