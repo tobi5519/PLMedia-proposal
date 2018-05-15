@@ -2,6 +2,7 @@ package plmedia.proposal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import plmedia.proposal.model.entities.*;
@@ -41,10 +42,10 @@ public class MainController {
     @RequestMapping(value = {"", "/", "index"}, method = RequestMethod.GET)
     public String index(){
 
-        ProposalCreator proposalCreator = new ProposalCreator();
-        Proposal proposal = proposalCreator.createProposal();
-        System.out.println(proposal);
-        proposalRepo.save(proposal);
+//        ProposalCreator proposalCreator = new ProposalCreator();
+//        Proposal proposal = proposalCreator.createProposal();
+//        System.out.println(proposal);
+//        proposalRepo.save(proposal);
 
         return "index";
     }
@@ -98,6 +99,54 @@ public class MainController {
     @RequestMapping(value = {"sentproposals"}, method = RequestMethod.GET)
     public String sentproposals() {
         return "sentproposals";
+    }
+
+
+    @RequestMapping(value = {"test"}, method = RequestMethod.GET)
+    public String test() {
+
+        // Creation
+
+//        ProductCreator productCreator = new ProductCreator();
+//        Product product = productCreator.createProduct("SEO", 200.0, "Search Engine Optimization");
+//        List<Product> productList = new ArrayList<>();
+//        productList.add(product);
+//
+//        ProposalCreator proposalCreator = new ProposalCreator();
+//        Proposal proposal =  proposalCreator.createProposal(10);
+//
+//        CustomerCreator customerCreator = new CustomerCreator();
+//        Customer customer = customerCreator.createCustomer("KEA", "123");
+//
+//        ContactPersonCreator contactPersonCreator = new ContactPersonCreator();
+//        ContactPerson contactPerson = contactPersonCreator.createContactPerson("Andreas", "Nissemand@nordpolen.dk", "88888888");
+//
+//        contactPersonRepo.save(contactPerson);
+//
+//        List<ContactPerson> contactPersonList = new ArrayList<>();
+//
+//        contactPersonList.add(contactPerson);
+//
+//        // Putting things together
+//
+//        customer.setContactPersons(contactPersonList);
+//        customerRepo.save(customer);
+//
+//        proposal.setCustomer(customer);
+//        proposal.setProducts(productList);
+//
+//        proposalRepo.save(proposal);
+
+        List<Customer> customers = customerRepo.findAll();
+        for (Customer c : customers) {
+            if (c.getCvr().equals("123")){
+                System.out.println(c.getCompanyName());
+                break;
+            }
+    }
+
+
+        return "test";
     }
 
 }
