@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>PLMedia</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body class="container-fluid">
+<div th:replace="fragments/header :: header"/>
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="col-sm-4">
+        <h2>Tilbuds detaljer</h2>
+            <div class="form-group">
+                <label for="id">ID:</label>
+                <span type="text" class="form-control" id="id" th:text="${p.id}">ID no</span>
+            </div>
+
+            <div class="form-group">
+                <label for="customername">Firmanavn:</label>
+                <span type="text" class="form-control" id="customername" th:text="${p.customer}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="senddate">Dato for afsendelse:</label>
+                <span type="text" class="form-control" id="senddate" th:text="${p.sendDate}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="acceptdate">Dato for accept:</label>
+                <span class="form-control" id="acceptdate" th:text="${p.acceptDate}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="discount">Rabat i %:</label>
+                <span class="form-control" id="discount" th:text="${p.discount}"/></span>
+            </div>
+        <a th:href="@{/sentproposals}" class="btn btn-primary">Tilbage til oversigt</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

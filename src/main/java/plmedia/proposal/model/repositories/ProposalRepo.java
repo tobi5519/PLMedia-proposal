@@ -16,5 +16,6 @@ public interface ProposalRepo extends JpaRepository<Proposal, Integer> {
     List<Proposal> findAllByCustomerCompanyName(String companyName);
     List<Proposal> findAllByCustomer_Cvr(String cvr);
     List<Proposal> findAllByCustomerContactPersonsEmail(String email);
+    Proposal findById(int id);
 
 }

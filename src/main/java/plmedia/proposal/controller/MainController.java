@@ -113,14 +113,14 @@ public class MainController {
     }
 
     @RequestMapping(value = {"sentproposals"}, method = RequestMethod.GET)
-    public String sentproposals(Model model) {
+    public String sentProposals(Model model) {
         model.addAttribute("sentProposals", proposalRepo.findAll());
 
         return "sentproposals";
     }
 
     @RequestMapping(value = {"sentproposals"}, method = RequestMethod.POST)
-        public String sentproposals(@RequestParam(value = "searchfield", required = false) String searchField,
+        public String sentProposals(@RequestParam(value = "searchfield", required = false) String searchField,
                                     @RequestParam(value = "searchtype", required = false) String searchType,
                                     Model model) {
 
@@ -134,6 +134,12 @@ public class MainController {
             model.addAttribute("sentProposals", proposalRepo.findAll());
         }
         return "sentproposals";
+    }
+
+    @RequestMapping(value = {"proposaldetails"}, method = RequestMethod.GET)
+    public String proposalDetails(Model model, @RequestParam("proposalId") int proposalId) {
+        model.addAttribute("p", proposalRepo.findById(proposalId));
+        return "proposaldetails";
     }
 
     @RequestMapping(value = {"test"}, method = RequestMethod.GET)
