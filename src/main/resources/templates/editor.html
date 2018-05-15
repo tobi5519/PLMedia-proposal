@@ -12,9 +12,9 @@
 </head>
 <body class="container-fluid">
 <div th:replace="fragments/header :: header"/>
-<div class="row">
-    <div class="col-md-6 mx-auto">
-        <img src="https://i.imgur.com/zuVzM3b.png" class="img_fluid" width="868" height="517" alt="Responsive image">
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <img src="https://i.imgur.com/zuVzM3b.png" class="img-fluid" alt="Responsive image">
     </div>
     <div class="col-md-3">
         <div class="card">
@@ -22,11 +22,31 @@
                 Tilføj produkt
             </div>
             <div class="card-body">
-                <p>Produkt 1 <a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 1" data-content="Beskrivelse af produkt 1">(Detaljer)</a></p>
-                <p>Produkt 2 <a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 2" data-content="Beskrivelse af produkt 2">(Detaljer)</a></p>
-                <p>Produkt 3 <a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 3" data-content="Beskrivelse af produkt 3">(Detaljer)</a></p>
-                <p>Produkt 4 <a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 4" data-content="Beskrivelse af produkt 4">(Detaljer)</a></p>
-                <p>Produkt 5 <a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 5" data-content="Beskrivelse af produkt 5">(Detaljer)</a></p>
+                <p>
+                    Produkt 1
+                    <a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 1" data-content="Beskrivelse af produkt 1">(Detaljer)</a>
+                    <button type="button" class="btn float-right">Tilføj/fjern produkt</button>
+                </p>
+                <p>
+                    Produkt 2
+                    <a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 2" data-content="Beskrivelse af produkt 2">(Detaljer)</a>
+                    <button type="button" class="btn float-right">Tilføj/fjern produkt</button>
+                </p>
+                <p>
+                    Produkt 3
+                    <a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 3" data-content="Beskrivelse af produkt 3">(Detaljer)</a>
+                    <button type="button" class="btn float-right">Tilføj/fjern produkt</button>
+                </p>
+                <p>
+                    Produkt 4
+                    <a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 4" data-content="Beskrivelse af produkt 4">(Detaljer)</a>
+                    <button type="button" class="btn float-right">Tilføj/fjern produkt</button>
+                </p>
+                <p>
+                    Produkt 5
+                    <a href="#" data-toggle="popover" data-trigger="focus" title="Produkt 5" data-content="Beskrivelse af produkt 5">(Detaljer)</a>
+                    <button type="button" class="btn float-right">Tilføj/fjern produkt</button>
+                </p>
             </div>
         </div>
     </div>
@@ -66,10 +86,25 @@
                 <td>3299 .-</td>
             </tr>
             </tbody>
+            <tfoot>
+            <tr>
+                <th>Total pris:</th>
+                <th></th>
+                <th>9999 .-</th>
+            </tr>
+            </tfoot>
         </table>
-        <div id="editor-error">Eventuelle fejlmeddelelser til brugeren!</div>
-        </br>
-        <button type="button" class="btn btn-primary">Send tilbud</button>
+
+        <div id="editor-extra">
+            <div id="editor-error">
+                Eventuelle fejlmeddelelser til brugeren!
+            </div>
+            </br>
+            <button type="button" class="btn">
+                Send tilbud
+            </button>
+        </div>
+
     </div>
 </div>
 </body>

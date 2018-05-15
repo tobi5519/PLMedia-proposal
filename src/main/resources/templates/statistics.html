@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <title>PLMedia</title>
     <div th:replace="fragments/header :: header-css"/>
@@ -7,38 +7,42 @@
 <body class="container-fluid">
 <div th:replace="fragments/header :: header"/>
 <div class="row">
-    <div class="col-md-3 offset-md-1 ">
+    <div class="col-md-3 offset-md-1">
         <div class="card bg-light" style="max-width: 20rem;">
-            <div class="card-header">Samlet statistik</div>
+            <div class="card-header" align="center" th:text="${totalProposals1} ? 'Periode 1' : 'Samlet statistik'">Samlet statistik</div>
             <div class="card-body">
-                <p class="card-text">Samlet antal afsendte tilbud: 100</p>
-                <p class="card-text">Samlet antal accepterede tilbud: 37</p>
-                <p class="card-text">Accepterede tilbud i procent: 37% </p>
+                <p class="card-text">Samlet antal afsendte tilbud: <span class="card-text" th:text="${#numbers.formatDecimal(totalProposals,1,0)}"></span></p>
+                <p class="card-text">Samlet antal accepterede tilbud: <span class="card-text" th:text="${#numbers.formatDecimal(totalAcceptedProposals,1,0)}"></span></span></p>
+                <p class="card-text">Samlet antal accepterede tilbud: <span class="card-text" th:text="${#numbers.formatDecimal(((totalAcceptedProposals / totalProposals) * 100), 1, 1)}"></span>%</p>
             </div>
         </div>
-
     </div>
-    <div class="col-md-8">
+
+    <div class="col-md-7">
         <div id="piechart"></div>
 
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-        <script type="text/javascript">
+        <script type="text/javascript" th:inline="javascript">
             // Load google charts
             google.charts.load('current', {'packages':['corechart']});
             google.charts.setOnLoadCallback(drawChart);
 
             // Draw the chart and set the chart values
             function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Accepterede tilbud', 37],
-                    ['Ikke-accepterede tilbud', 63],
+                /*<![CDATA[*/
 
+                var data = google.visualization.arrayToDataTable([
+                    ['Tilbud', 'Antal'],
+                    ['Accepterede tilbud', /*[[${totalAcceptedProposals}]]*/],
+                    ['Ikke-accepterede tilbud', /*[[${totalNotAcceptedProposals}]]*/],
                 ]);
+                /*]]>*/
 
                 // Optional; add a title and set the width and height of the chart
-                var options = {};
+                var options = {
+                    chartArea:{top:15,bottom:15,width:'50%',height:'100%'}
+                };
 
                 // Display the chart inside the <div> element with id="piechart"
                 var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -47,7 +51,54 @@
         </script>
     </div>
 </div>
-<div class="row justify-content-md-center" style="padding-top: 5px">
+
+<div class="row" th:unless="${totalProposals1 == null}">
+    <div class="col-md-3 offset-md-1 mt-4">
+        <div class="card bg-light" style="max-width: 20rem;">
+            <div class="card-header" align="center">Periode 2</div>
+            <div class="card-body">
+                <p class="card-text">Samlet antal afsendte tilbud: <span class="card-text" th:text="${#numbers.formatDecimal(totalProposals1,1,0)}"></span></p>
+                <p class="card-text">Samlet antal accepterede tilbud: <span class="card-text" th:text="${#numbers.formatDecimal(totalAcceptedProposals1,1,0)}"></span></span></p>
+                <p class="card-text">Samlet antal accepterede tilbud: <span class="card-text" th:text="${#numbers.formatDecimal(((totalAcceptedProposals1 / totalProposals1) * 100), 1, 1)}"></span>%</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <div id="piechart1"></div>
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+        <script type="text/javascript" th:inline="javascript">
+            // Load google charts
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+
+            // Draw the chart and set the chart values
+            function drawChart() {
+                /*<![CDATA[*/
+
+                var data = google.visualization.arrayToDataTable([
+                    ['Tilbud', 'Antal'],
+                    ['Accepterede tilbud', /*[[${totalAcceptedProposals1}]]*/],
+                    ['Ikke-accepterede tilbud', /*[[${totalNotAcceptedProposals1}]]*/],
+                ]);
+                /*]]>*/
+
+                // Optional; add a title and set the width and height of the chart
+                var options = {
+                    chartArea:{top:15,bottom:15,width:'50%',height:'100%'}
+                };
+
+                // Display the chart inside the <div> element with id="piechart"
+                var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+                chart.draw(data, options);
+            }
+        </script>
+    </div>
+</div>
+
+<div class="row justify-content-md-center pt-4">
     <!-- Button to Open the Modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
         Sammenlign to perioder
@@ -66,26 +117,26 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form>
+
+                    <!-- Search form -->
+                    <form th:action="@{/statistics}" method="post">
                         <div class="form-group">
-                            <label for="startDate1">Start dato for første periode</label>
-                            <input type="date" class="form-control" id="startDate1" aria-describedby="startDateHelp1">
-                            <small id="startDateHelp1" class="form-text text-muted"></small>
+                            <label for="fromDate1">Start dato for første periode</label>
+                            <input type="date" class="form-control" id="fromDate1" name="date" value="2018-04-01">
                         </div>
                         <div class="form-group">
-                            <label for="endDate1">Slut dato for første periode</label>
-                            <input type="date" class="form-control" id="endDate1">
+                            <label for="toDate1">Slut dato for første periode</label>
+                            <input type="date" class="form-control" id="toDate1" name="date" value="2018-05-25">
                         </div>
-                        <div class="form-group2">
-                            <label for="startDate2">Start dato for anden periode</label>
-                            <input type="date" class="form-control" id="startDate2" aria-describedby="startDateHelp2">
-                            <small id="startDateHelp2" class="form-text text-muted"></small>
+                        <div class="form-group">
+                            <label for="fromDate2">Start dato for anden periode</label>
+                            <input type="date" class="form-control" id="fromDate2" name="date" value="2018-04-01">
                         </div>
-                        <div class="form-group2">
-                            <label for="endDate2">Slut dato for anden periode</label>
-                            <input type="date" class="form-control" id="endDate2">
+                        <div class="form-group">
+                            <label for="toDate2">Slut dato for anden periode</label>
+                            <input type="date" class="form-control" id="toDate2" name="date" value="2018-05-25">
                         </div>
-                        <div class="btn-group" role="group" aria-label="Basic example" style="margin-top: 5px">
+                        <div class="btn-group" role="group" style="margin-top: 5px">
                             <button type="submit" class="btn btn-primary">Søg</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Luk</button>
                         </div>
