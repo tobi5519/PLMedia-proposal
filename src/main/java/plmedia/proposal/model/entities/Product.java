@@ -51,6 +51,10 @@ public class Product {
         this.description = description;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

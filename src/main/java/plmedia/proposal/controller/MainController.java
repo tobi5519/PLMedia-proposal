@@ -36,61 +36,45 @@ public class MainController {
     @Autowired
     TemplateRepo templateRepo;
 
-
     public MainController(){}
 
     @RequestMapping(value = {"", "/", "index"}, method = RequestMethod.GET)
     public String index(){
-
-//        ProposalCreator proposalCreator = new ProposalCreator();
-//        Proposal proposal = proposalCreator.createProposal();
-//        System.out.println(proposal);
-//        proposalRepo.save(proposal);
-
         return "index";
     }
 
     @RequestMapping(value = {"products"}, method = RequestMethod.GET)
     public String products(Model model) {
         model.addAttribute("products", productRepo.findAll());
+        model.addAttribute("product", new Product());
         return "products";
     }
 
+    @RequestMapping (value = {"createproduct"}, method = RequestMethod.POST)
+    public String createProduct(@ModelAttribute("product") Product product){
+        productRepo.save(product);
+        return "redirect:/products";
+    }
+
     @RequestMapping(value = {"productdetails"}, method = RequestMethod.GET)
-    public String productdetails(Model model, @RequestParam int productId) {
-        model.addAttribute(productRepo.findById(productId));
+    public String productDetails(Model model, @RequestParam int productId) {
+        model.addAttribute("product", productRepo.findById(productId));
         return "productdetails";
     }
 
-    @RequestMapping (value = {"productdetails"}, method = RequestMethod.POST)
-    public String updateproduct(@ModelAttribute("product") Product newProduct)
-    {
-        try {
-            Product product = productRepo.findById(7);
-
-            System.out.println(newProduct.getId());
-            System.out.println(newProduct);
-            System.out.println(product);
-
-            product.setName(newProduct.getName());
-            product.setDescription(newProduct.getDescription());
-            product.setPrice(newProduct.getPrice());
+    @RequestMapping (value = {"updateproduct"}, method = RequestMethod.POST)
+    public String updateProduct(@ModelAttribute("product") Product product){
+        System.out.println(product);
             productRepo.save(product);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         return "redirect:/products";
     }
 
-
     @RequestMapping (value = {"deleteproduct"}, method = RequestMethod.GET)
-    public String deleteShowing(@RequestParam int productId) {
+    public String deleteProduct(@RequestParam int productId) {
         productRepo.deleteById(productId);
         return "redirect:/products";
     }
-
-
 
     @RequestMapping(value = {"login"}, method = RequestMethod.GET)
     public String login() {
@@ -194,13 +178,8 @@ public class MainController {
                 break;
             }
     }
-
-
         return "test";
     }
-
-
-
 }
 
 

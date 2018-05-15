@@ -20,21 +20,19 @@
                     <h4 class="modal-title">Opret nyt produkt</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-
-                <!-- Modal body -->
                 <div class="modal-body">
-                    <form>
+                    <form th:action="@{/createproduct}" method="post" th:object="${product}">
                         <div class="form-group">
-                            <label for="productname-text" class="col-form-label">Navn:</label>
-                            <input type="text" class="form-control" id="productname-text">
+                            <label for="name" class="col-form-label">Navn:</label>
+                            <input type="text" class="form-control"  id="name" th:field="*{name}">
                         </div>
                         <div class="form-group">
-                            <label for="productdesc-text" class="col-form-label">Beskrivelse:</label>
-                            <textarea class="form-control" id="productdesc-text"></textarea>
+                            <label for="description" class="col-form-label">Beskrivelse:</label>
+                            <textarea class="form-control" id="description" th:field="*{description}"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="productprice-text" class="col-form-label">Pris:</label>
-                            <input type="text" class="form-control" id="productprice-text">
+                            <label for="price" class="col-form-label">Pris:</label>
+                            <input type="text" class="form-control" id="price" th:field="*{price}">
                         </div>
                         <div class="btn-group" role="group" aria-label="Basic example" style="margin-top: 5px">
                             <button type="submit" class="btn btn-primary">Opret produkt</button>

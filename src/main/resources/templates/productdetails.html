@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-md-10 offset-md-1">
         <h2>Produkt detaljer</h2>
-        <form th:action="@{/productdetails}" method="post" th:object="${product}" class="col-sm-4">
+        <form th:action="@{/updateproduct}" method="post" th:object="${product}" class="col-sm-4">
 
             <div class="form-group">
                 <label for="id">ID:</label>
@@ -33,12 +33,11 @@
 
             <div class="btn-group" role="group">
                 <input class="btn btn-info" role="button" type="submit" value="Gem" />
-                <a th:if="*{id == 0}" th:href="@{/products}" class="btn btn-primary">tilbage til oversigt</a>
+                <a th:if="*{id == 0}" th:href="@{/updateproduct}" class="btn btn-primary">tilbage til oversigt</a>
             </div>
 
         </form>
     </div>
 </div>
-
 </body>
 </html>
