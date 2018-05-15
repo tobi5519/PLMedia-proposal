@@ -145,12 +145,14 @@ public class MainController {
                                     @RequestParam(value = "searchtype", required = false) String searchType,
                                     Model model) {
 
-        if (searchType.equalsIgnoreCase("cvr")) {
+        if (searchType.equalsIgnoreCase("cvr")) { // Fx. 123
             model.addAttribute("sentProposals", proposalRepo.findAllByCustomer_Cvr(searchField));
-        } else if (searchType.equalsIgnoreCase("companyname")) {
+        } else if (searchType.equalsIgnoreCase("companyname")) { // Fx. Cofoco ApS
             model.addAttribute("sentProposals", proposalRepo.findAllByCustomerCompanyName(searchField));
         } else if (searchType.equalsIgnoreCase("email")) { // fx. Julemand@nordpolen.dk
             model.addAttribute("sentProposals", proposalRepo.findAllByCustomerContactPersonsEmail(searchField));
+        } else if (searchType.equalsIgnoreCase("search")) { // In case you do not type anything in searchfield
+            model.addAttribute("sentProposals", proposalRepo.findAll());
         }
         return "sentproposals";
     }

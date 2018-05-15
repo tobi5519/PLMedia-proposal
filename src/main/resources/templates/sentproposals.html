@@ -10,7 +10,7 @@
     <form th:action="@{/sentproposals}" class="form-inline" method="post">
         <div class="form-group">
             <select id="searchtype" name="searchtype" class="form-control">
-                <option selected disabled>Søgekriterie</option>
+                <option selected th:name="search" th:value="search">Søgekriterie</option>
                 <option th:name="cvr" th:value="cvr">CVR-nr</option>
                 <option th:name="companyname" th:value="companyname">Firmanavn</option>
                 <option th:name="email" th:value="email">E-mail</option>
