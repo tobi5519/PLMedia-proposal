@@ -59,6 +59,6 @@ public class Customer {
     }
 
     public String toString(){
-        return companyName + ": " + "[list of contacts]";
+        return companyName;
     }
 }
