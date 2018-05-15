@@ -134,10 +134,26 @@ public class MainController {
     }
 
     @RequestMapping(value = {"sentproposals"}, method = RequestMethod.GET)
-    public String sentproposals() {
+    public String sentproposals(Model model) {
+        model.addAttribute("sentProposals", proposalRepo.findAll());
+
         return "sentproposals";
     }
 
+    @RequestMapping(value = {"sentproposals"}, method = RequestMethod.POST)
+        public String sentproposals(@RequestParam(value = "searchfield", required = false) String searchField,
+                                    @RequestParam(value = "searchtype", required = false) String searchType,
+                                    Model model) {
+
+        if (searchType.equalsIgnoreCase("cvr")) {
+            model.addAttribute("sentProposals", proposalRepo.findAllByCustomer_Cvr(searchField));
+        } else if (searchType.equalsIgnoreCase("companyname")) {
+            model.addAttribute("sentProposals", proposalRepo.findAllByCustomerCompanyName(searchField));
+        } else if (searchType.equalsIgnoreCase("email")) { // fx. Julemand@nordpolen.dk
+            model.addAttribute("sentProposals", proposalRepo.findAllByCustomerContactPersonsEmail(searchField));
+        }
+        return "sentproposals";
+    }
 
     @RequestMapping(value = {"test"}, method = RequestMethod.GET)
     public String test() {

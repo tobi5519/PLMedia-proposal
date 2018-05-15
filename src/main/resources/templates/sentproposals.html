@@ -7,15 +7,15 @@
 <body class="container-fluid">
 <div th:replace="fragments/header :: header"/>
 <div class="form-row col-md-12 justify-content-center">
-    <form class="form-inline">
+    <form th:action="@{/sentproposals}" class="form-inline" method="post">
         <div class="form-group">
-            <select id="search" class="form-control">
-                <option selected>Søgekriterie:</option>
-                <option>CVR-nr</option>
-                <option>Firmanavn</option>
-                <option>E-mail</option>
+            <select id="searchtype" name="searchtype" class="form-control">
+                <option selected disabled>Søgekriterie</option>
+                <option th:name="cvr" th:value="cvr">CVR-nr</option>
+                <option th:name="companyname" th:value="companyname">Firmanavn</option>
+                <option th:name="email" th:value="email">E-mail</option>
             </select>
-            <input class="form-control" type="text">
+            <input class="form-control" id="searchfield" name="searchfield" type="text">
         </div>
         <button type="submit" class="btn sent-prop-btn">Søg</button>
     </form>
@@ -29,35 +29,24 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Firmanavn</th>
-                    <th scope="col">CVR-nr</th>
+                    <th scope="col">Afsendt d.</th>
+                    <th scope="col">Accepteret d.</th>
+                    <th scope="col" style="width: 100px"></th>
+                    <th scope="col" style="width: 100px"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>PLMedia</td>
-                    <td>38388754</td>
-                    <td><a th:href="@{/#}">Detaljer</a></td>
-                    <td><a th:href="@{/#}">Vis i Editor</a></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Tobias' Swingerklub</td>
-                    <td>69696969</td>
-                    <td><a th:href="@{/#}">Detaljer</a></td>
-                    <td><a th:href="@{/#}">Vis i Editor</a></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>KEA</td>
-                    <td>666</td>
-                    <td><a th:href="@{/#}">Detaljer</a></td>
+                <tr th:each="p: ${sentProposals}">
+                    <td th:text="${p.id}"/>
+                    <td th:text="${p.customer}"/>
+                    <td th:text="${p.sendDate}"/>
+                    <td th:text="${p.acceptDate}"/>
+                    <td><a th:href="@{/proposaldetails(proposalId=${p.id})}">Detaljer</a></td>
                     <td><a th:href="@{/#}">Vis i Editor</a></td>
                 </tr>
                 </tbody>
             </table>
         </div>
-
     </div>
 </div>
 </body>
