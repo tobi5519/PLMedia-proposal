@@ -40,6 +40,10 @@ public class Proposal {
     public Proposal() {
     }
 
+    public Proposal(double discount){
+        this.discount = discount;
+    }
+
     public int getId() {
         return id;
     }

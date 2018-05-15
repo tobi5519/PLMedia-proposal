@@ -8,7 +8,7 @@ public class CustomerCreator {
 
     }
 
-    public Customer createCustomer(){
-        return new Customer();
+    public Customer createCustomer(String companyName, String cvr){
+        return new Customer(companyName, cvr);
     }
 }

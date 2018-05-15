@@ -8,7 +8,7 @@ public class ProposalCreator {
 
     }
 
-    public Proposal createProposal(){
-        return new Proposal();
+    public Proposal createProposal(double discount){
+        return new Proposal(discount);
     }
 }

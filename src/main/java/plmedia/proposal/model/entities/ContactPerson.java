@@ -28,6 +28,12 @@ public class ContactPerson {
     public ContactPerson() {
     }
 
+    public ContactPerson(String name, String email, String phoneNumber) {
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
     public int getId() {
         return id;
     }

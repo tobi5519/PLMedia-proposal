@@ -15,14 +15,19 @@ public class Customer {
     @Column(name = "company_name")
     private String companyName;
 
-    @Column(name = "cvr", unique = true)
+    @Column(name = "cvr")
     private String cvr;
 
     @OneToMany
-    @JoinTable(name = "contact_person")
+    @JoinTable(name = "company_contact_persons")
     private List<ContactPerson> contactPersons;
 
     public Customer() {
+    }
+
+    public Customer(String companyName, String cvr){
+        this.companyName = companyName;
+        this.cvr = cvr;
     }
 
     public int getId() {

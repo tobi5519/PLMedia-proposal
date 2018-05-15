@@ -7,7 +7,7 @@ public class ContactPersonCreator {
     public ContactPersonCreator(){
     }
 
-    public ContactPerson createContactPerson(){
-        return new ContactPerson();
+    public ContactPerson createContactPerson(String name, String email, String phoneNumber){
+        return new ContactPerson(name, email, phoneNumber);
     }
 }
