@@ -49,40 +49,27 @@
 <br>
 <div class="row">
     <div class="col-md-10 offset-md-1">
+
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Navn</th>
-                    <th scope="col">Kategori</th>
+                    <th scope="col">Beskrivelse</th>
                     <th scope="col">Stykpris</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Login funktion</td>
-                    <td>Hjemmeside</td>
-                    <td>1000</td>
-                    <td><a th:href="@{/productdetails}">Detaljer</a></td>
-                    <td><a th:href="@{/#}">Slet</a></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Logo</td>
-                    <td>Hjemmeside</td>
-                    <td>100</td>
-                    <td><a th:href="@{/productdetails}">Detaljer</a></td>
-                    <td><a th:href="@{/#}">Slet</a></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Overskrifter</td>
-                    <td>Hjemmeside</td>
-                    <td>50</td>
-                    <td><a th:href="@{/productdetails}">Detaljer</a></td>
-                    <td><a th:href="@{/#}">Slet</a></td>
+                <tr th:each="p: ${products}">
+                    <td th:text="${p.id}"/>
+                    <td th:text="${p.name}"/>
+                    <td th:text="${p.description}"/>
+                    <td th:text="${p.price}"/>
+                    <td><a th:href="@{/productdetails(productId=${p.id})}">Rediger</a></td>
+                    <td><a th:href="@{/deleteproduct(productId=${p.id})}">Slet</a></td>
                 </tr>
                 </tbody>
             </table>

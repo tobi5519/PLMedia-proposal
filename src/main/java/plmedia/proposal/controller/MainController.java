@@ -51,14 +51,51 @@ public class MainController {
     }
 
     @RequestMapping(value = {"products"}, method = RequestMethod.GET)
-    public String products() {
+    public String products(Model model) {
+        model.addAttribute("products", productRepo.findAll());
         return "products";
     }
 
     @RequestMapping(value = {"productdetails"}, method = RequestMethod.GET)
-    public String productdetails() {
+    public String productdetails(Model model, @RequestParam int productId) {
+        model.addAttribute(productRepo.findById(productId));
         return "productdetails";
     }
+
+//    @RequestMapping(value = {"productdetails"}, method = RequestMethod.POST)
+//    public String updateproduct(@ModelAttribute("product") Product newProduct) {
+////        System.out.println(newProduct.getName());
+//        Product product = productRepo.findById(newProduct.getId());
+//        product.setName("Andreas");
+//        product.setPrice(9000);
+//        product.setDescription("Altid glad og imødekommende");
+//        productRepo.save(product);
+//        return "redirect:/products";
+//    }
+
+    @RequestMapping (value = {"productdetails"}, method = RequestMethod.POST)
+    public String updateproduct(@ModelAttribute("movie") Product newProduct, @RequestParam int productId)
+    {
+        try {
+            Product product = productRepo.findById(productId);
+            product.setName(newProduct.getName());
+            product.setDescription(newProduct.getDescription());
+            product.setPrice(newProduct.getPrice());
+            productRepo.save(product);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/products";
+    }
+
+
+    @RequestMapping (value = {"deleteproduct"}, method = RequestMethod.GET)
+    public String deleteShowing(@RequestParam int productId) {
+        productRepo.deleteById(productId);
+        return "redirect:/products";
+    }
+
+
 
     @RequestMapping(value = {"login"}, method = RequestMethod.GET)
     public String login() {
@@ -148,6 +185,8 @@ public class MainController {
 
         return "test";
     }
+
+
 
 }
 
