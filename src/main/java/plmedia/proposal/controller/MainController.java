@@ -62,26 +62,21 @@ public class MainController {
         return "productdetails";
     }
 
-//    @RequestMapping(value = {"productdetails"}, method = RequestMethod.POST)
-//    public String updateproduct(@ModelAttribute("product") Product newProduct) {
-////        System.out.println(newProduct.getName());
-//        Product product = productRepo.findById(newProduct.getId());
-//        product.setName("Andreas");
-//        product.setPrice(9000);
-//        product.setDescription("Altid glad og imødekommende");
-//        productRepo.save(product);
-//        return "redirect:/products";
-//    }
-
     @RequestMapping (value = {"productdetails"}, method = RequestMethod.POST)
-    public String updateproduct(@ModelAttribute("movie") Product newProduct, @RequestParam int productId)
+    public String updateproduct(@ModelAttribute("product") Product newProduct)
     {
         try {
-            Product product = productRepo.findById(productId);
+            Product product = productRepo.findById(7);
+
+            System.out.println(newProduct.getId());
+            System.out.println(newProduct);
+            System.out.println(product);
+
             product.setName(newProduct.getName());
             product.setDescription(newProduct.getDescription());
             product.setPrice(newProduct.getPrice());
             productRepo.save(product);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

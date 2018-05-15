@@ -44,6 +44,13 @@ public class Product {
         this.description = description;
     }
 
+    public Product(int id, String name, double price, String description) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+    }
+
     public int getId() {
         return id;
     }
@@ -90,6 +97,6 @@ public class Product {
 
     @Override
     public String toString(){
-        return name + " costs " + price + " and is " + description;
+        return "ID: " + id + "Name: " + name + " costs " + price + " and is " + description;
     }
 }

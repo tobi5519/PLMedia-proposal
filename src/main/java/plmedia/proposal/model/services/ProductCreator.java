@@ -9,4 +9,8 @@ public class ProductCreator {
     public Product createProduct(String name, double price, String description){
         return new Product(name, price, description);
     }
+
+    public Product createProduct(int id, String name, double price, String description){
+        return new Product(id, name, price, description);
+    }
 }
